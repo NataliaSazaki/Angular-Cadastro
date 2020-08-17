@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 style="margin-left: 80px;">Cadastro de Usuários</h1>
+    <form #frm="ngForm" (ngSubmit)="criar(frm)" method="POST">
+        <div style="margin-left: 50px; margin-right: 600px;">
+            <div class="form-group" style="margin-top: 50px;">
+                <label for="identity">Id</label>
+                <input type="number" class="form-control" name="id" id="identity" placeholder="Id" [(ngModel)] = "usuario.id" required>
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" [(ngModel)] = "usuario.nome" required>
+            </div>
+            <div class="form-group">
+                <label for="idade">Idade</label>
+                <input type="number" class="form-control" name="idade" id="idade" placeholder="Idade" [(ngModel)] = "usuario.idade" required>
+            </div>
+            <div style="margin-top: 50px;">
+                <td>
+                    <button type="submit" class="btn btn-success btn-lg" style="width: 140px" [disabled]="frm.invalid">Cadastrar</button>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <button type="button" (click)="editar(frm)" class="btn btn-info btn-lg" style="width: 140px;" [disabled]="frm.invalid">Editar</button>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <button type="button" (click)="apagar(frm)" class="btn btn-danger btn-lg" style="width: 140px;" [disabled]="frm.invalid">Deletar</button>
+                </td>
+            </div>
+        </div>
+        <div class="container">
+            <div class="table-responsive" style="margin-top: 50px;">
+              <table class="table table-bordered table-hover">
+                <thead class="thead-light text-center">
+                  <tr>
+                    <th>Id</th>
+      
+                    <th>Nome</th>
+      
+                    <th>Idade</th>
+                  </tr>
+                </thead>
+      
+                <tbody>
+                  <tr *ngFor="let u of usuarios" (click)="this.usuario=u">
+                    <td>{{u.id}}</td>
+      
+                    <td>{{u.nome}}</td>
+      
+                    <td>{{u.idade}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </form>
+</div>
